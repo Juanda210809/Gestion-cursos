@@ -1,0 +1,49 @@
+/* === ESTILOS PARA LA LISTA DE CURSOS === */
+body {
+	background-color: #f5f7fb;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+
+.table-container {
+	max-width: 1000px;
+	margin: 40px auto;
+	background: #fff;
+	padding: 20px;
+	border-radius: 12px;
+	box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.1);
+}
+
+.table {
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.table-container {
+	max-width: 1000px;
+	margin: 40px auto; /* 👈 Esto la centra automáticamente */
+}
+
+.table th {
+	background-color: #00b3ff;
+	color: white;
+	font-weight: 600;
+}
+
+.table td {
+	vertical-align: middle;
+}
+
+.btn {
+	border-radius: 5px;
+	padding: 5px 12px;
+}
+
+.btn-warning:hover {
+	background-color: #ffb100;
+}
+
+.btn-danger:hover {
+	background-color: #e74c3c;
+}

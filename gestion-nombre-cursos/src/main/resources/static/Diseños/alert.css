@@ -1,0 +1,54 @@
+/* === ALERTAS DE MENSAJES === */
+.alert {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 15px 20px;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Alerta de éxito */
+.alert-success {
+  background: linear-gradient(90deg, #4fd1c5, #81e6d9);
+  color: #0b3d3b;
+  border: none;
+}
+
+/* Alerta de error */
+.alert-danger {
+  background: linear-gradient(90deg, #f56565, #fc8181);
+  color: #fff5f5;
+  border: none;
+}
+
+/* Alerta informativa */
+.alert-info {
+  background: linear-gradient(90deg, #63b3ed, #90cdf4);
+  color: #0b2545;
+  border: none;
+}
+
+/* Botón de cierre (la “X”) */
+.alert .close {
+  position: absolute;
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 1.2rem;
+  opacity: 0.7;
+  transition: 0.2s ease;
+}
+
+.alert .close:hover {
+  color: rgba(0, 0, 0, 0.7);
+  opacity: 1;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
