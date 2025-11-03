@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.lowagie.text.DocumentException;
 import com.unbosque.gestiocursos.gestion_nombre_cursos.entity.Curso;
+import com.unbosque.gestiocursos.gestion_nombre_cursos.reports.CursoExporterExcel;
 import com.unbosque.gestiocursos.gestion_nombre_cursos.reports.CursoExporterPDF;
 import com.unbosque.gestiocursos.gestion_nombre_cursos.repository.CursoRepository;
 
@@ -102,12 +103,12 @@ public class CursoController {
 
 	@GetMapping("/export/pdf")
 	public void generarReportePDF(HttpServletResponse response) throws DocumentException, IOException {
-	response.setContentType("aplication/pdf");
+	response.setContentType("application/pdf");
 	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
 	String currentDateTime = dateFormat.format(new Date());
 		
 	String headerKey="Content-Disposition";
-	String headerValue = "attachment; filename=cursos"+currentDateTime+".pdf";
+	String headerValue = "attachment; filename=cursos_"+currentDateTime+".pdf";
 	response.setHeader(headerKey, headerValue);
 	
 	List<Curso>cursos = cursoRepository.findAll();
@@ -116,6 +117,21 @@ public class CursoController {
 	exporterPDF.export(response);
 	}
 	
-	
+	@GetMapping("/export/excel")
+	public void generarReporteExcel(HttpServletResponse response) throws DocumentException, IOException {
+		response.setContentType("application/octet-stream");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+		String currentDateTime = dateFormat.format(new Date());
+		
+		String headerKey = "Content-Disposition";
+		String headerValue = "attachment; filename=cursos_" + currentDateTime + ".xlsx";
+		response.setHeader(headerKey, headerValue);
+
+		
+		List<Curso>cursos = cursoRepository.findAll();
+		
+		CursoExporterExcel exporterExcel = new CursoExporterExcel(cursos);
+		exporterExcel.export(response);
+	}
 	
 }

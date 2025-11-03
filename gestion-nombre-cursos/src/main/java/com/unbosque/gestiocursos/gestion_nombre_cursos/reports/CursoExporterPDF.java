@@ -36,7 +36,7 @@ public class CursoExporterPDF {
 		font.setColor(Color.WHITE);
 
 		cell.setPhrase(new Phrase("ID", font));
-
+		table.addCell(cell);
 		cell.setPhrase(new Phrase("Titulo", font));
 		table.addCell(cell);
 
@@ -75,11 +75,12 @@ public class CursoExporterPDF {
 		p.setAlignment(Paragraph.ALIGN_CENTER);
 
 		document.add(p);
-
+		
 		PdfPTable table = new PdfPTable(5);
 		table.setWidthPercentage(100f);
-		table.setWidths(new float[] { 1.3f, 3.5f, 3.5f, 2.0f, 1.5f });
+		table.setWidths(new float[] { 0.8f, 2.5f, 4f, 1f, 1.2f });
 		table.setSpacingBefore(10);
+
 
 		writeTableHeader(table);
 		writeTableData(table);
