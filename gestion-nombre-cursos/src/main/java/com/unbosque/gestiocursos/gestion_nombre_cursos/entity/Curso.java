@@ -26,7 +26,7 @@ public class Curso {
 	private Integer id;
 	
 	@Column(length = 128, nullable= false)
-	private String Titulo;
+	private String titulo;
 	
 	@Column(length = 256)
 	private String descripcion;

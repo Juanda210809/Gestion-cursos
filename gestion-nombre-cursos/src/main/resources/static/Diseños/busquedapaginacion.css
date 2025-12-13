@@ -1,0 +1,126 @@
+/* ============================
+   Estilos para búsqueda y paginación
+   Archivo: busquedapaginacion.css
+   ============================ */
+
+.search-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 450px;
+    position: relative;
+}
+
+.search-box i {
+    position: absolute;
+    left: 12px;
+    color: #777;
+    font-size: 16px;
+}
+
+.search-box input[type="search"] {
+    width: 100%;
+    padding: 10px 40px 10px 35px;
+    border-radius: 30px 0 0 30px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.search-box input[type="search"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.search-box button {
+    border-radius: 0 30px 30px 0;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+}
+
+.search-box button:hover {
+    background-color: #0056b3;
+}
+
+/* Select de tamaño de página */
+.page-size-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.page-size-container label {
+    margin: 0;
+    font-weight: 500;
+}
+
+.page-size-container select {
+    border-radius: 5px;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.page-size-container select:hover {
+    border-color: #007bff;
+}
+
+/* Paginación */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.pagination-container .page-link {
+    color: #007bff;
+    border: 1px solid #dee2e6;
+    margin: 0 3px;
+    border-radius: 5px;
+    transition: all 0.2s;
+}
+
+.pagination-container .page-link:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.pagination-container .active .page-link {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .search-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .search-box {
+        max-width: 100%;
+    }
+
+    .page-size-container {
+        justify-content: center;
+    }
+}

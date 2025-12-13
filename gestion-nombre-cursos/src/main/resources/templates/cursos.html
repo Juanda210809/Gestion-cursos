@@ -10,6 +10,7 @@
 <link rel="stylesheet" th:href="@{/Diseños/encabezado.css}">
 <link rel="stylesheet" th:href="@{/Diseños/listacursos.css}">
 <link rel="stylesheet" th:href="@{/Diseños/alert.css}">
+<link rel="stylesheet" th:href="@{/Diseños/busquedapaginacion.css}">
 
 <title>Gestion de cursos</title>
 
@@ -18,7 +19,37 @@
 <body>
 
 
-	<div class="container" th:replace="fragments/header::header"></div>
+<div th:insert="~{fragments/header :: header}"></div>
+
+
+
+
+<div class="container my-3">
+    <form id="searchForm" th:action="@{/cursos}" method="get">
+        <div class="search-container">
+            
+            <!-- Caja de búsqueda -->
+            <div class="search-box">
+                <i class="fa fa-search"></i>
+                <input id="keyword" type="search" name="keyword" th:value="${keyword}"
+                       required placeholder="Buscar curso..." />
+                <button type="submit">Buscar</button>
+            </div>
+
+            <!-- Select de tamaño de página -->
+            <div class="page-size-container">
+                <label for="pageSize">Elementos por página:</label>
+                <select form="searchForm" name="size" th:value="${pageSize}"
+                        onchange="changePageSize()" id="pageSize">
+                    <option th:each="s : ${ { 3, 6, 9} }"
+                            th:value="${s}" th:text="${s}"
+                            th:selected="${s == pageSize}"></option>
+                </select>
+            </div>
+
+        </div>
+    </form>
+</div>
 
 
 	<div class="container mb-5">
@@ -85,9 +116,38 @@
 		</table>
 
 	</div>
+	
+	<div class="pagination-container">
+    <ul class="pagination">
+        <li class="page-item" th:classappend="${currentPage == 1} ? 'disabled'">
+            <a class="page-link"
+               th:href="@{/cursos(page=${currentPage - 1}, size=${pageSize}, keyword=${keyword})}">Anterior</a>
+        </li>
+
+        <li class="page-item" th:each="i : ${#numbers.sequence(1, totalPages)}"
+            th:classappend="${i == currentPage} ? 'active'">
+            <a class="page-link"
+               th:href="@{/cursos(page=${i}, size=${pageSize}, keyword=${keyword})}"
+               th:text="${i}"></a>
+        </li>
+
+        <li class="page-item" th:classappend="${currentPage == totalPages} ? 'disabled'">
+            <a class="page-link"
+               th:href="@{/cursos(page=${currentPage + 1}, size=${pageSize}, keyword=${keyword})}">Siguiente</a>
+        </li>
+    </ul>
+</div>
+	
 
 
+<script type="text/javascript">
 
+function changePageSize(){
+	
+	$('#searchForm').submit();
+}
+
+</script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

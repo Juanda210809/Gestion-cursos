@@ -1,0 +1,18 @@
+<!--
+Simplemente estamos especificando que la palabra clave es 
+distinta a null  de vacio entonces vamos a poenr la keyword
+y concatenamos con el siguiente parametro ( que es el de pagina )
+  -->
+
+<a th:fragment="paging(PageNum,label,tooltip)" class ="page-link"
+
+th:href="@{'/cursos?' + ${keyword != null $$ keyword!=''? 'keyword='+ keyword +'&':''}+ 'page ='+ ${pageNum}+ '&size=' +${pageSize}} "
+
+th:title="${tooltip}" rel="tooltip"
+
+[[${label}]]
+>
+
+
+
+</a>

@@ -68,7 +68,7 @@ public class CursoController {
 			}
 			cursos = pageCursos.getContent();
 			model.addAttribute("cursos", cursos);
-			model.addAttribute("currentPage", pageCursos.getNumber());
+			model.addAttribute("currentPage", pageCursos.getNumber()+1);
 
 			model.addAttribute("totalItems", pageCursos.getTotalElements());
 			model.addAttribute("totalPages", pageCursos.getTotalPages());
@@ -78,8 +78,6 @@ public class CursoController {
 			model.addAttribute("message", e.getMessage());
 		}
 
-		List<Curso> cursos = cursoRepository.findAll();
-		model.addAttribute("cursos", cursos);
 		return "cursos";
 	}
 
